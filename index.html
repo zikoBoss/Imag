@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الحاج كلا - بطاقات تهنئة رمضان الكريم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --primary: #0a3d62;
+            --secondary: #079992;
+            --accent: #f6b93b;
+            --gold: #e58e26;
+            --light: #f8f9fa;
+            --dark: #1e272e;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 61, 98, 0.85), rgba(7, 153, 146, 0.85)),
+                        url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* الشريط العلوي */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(245, 185, 59, 0.5);
+        }
+
+        .header h1 i {
+            color: var(--gold);
+            margin-left: 15px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* القسم الرئيسي */
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* لوحة التحكم */
+        .control-panel {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .input-section label {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .input-section input {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .input-section input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(245, 185, 59, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .input-section input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* أزرار التحكم */
+        .control-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: white;
+            box-shadow: 0 6px 20px rgba(7, 153, 146, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(7, 153, 146, 0.6);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .btn-image {
+            background: linear-gradient(90deg, #E4405F, #FD1D1D);
+            color: white;
+            box-shadow: 0 6px 20px rgba(228, 64, 95, 0.4);
+        }
+
+        .btn-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(228, 64, 95, 0.6);
+        }
+
+        /* قسم التخصيص */
+        .customization-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .option-btn {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .option-btn:hover, .option-btn.active {
+            background: rgba(245, 185, 59, 0.3);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* بطاقة التهنئة */
+        .card-container {
+            flex: 2;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #greetingCard {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .card-greeting {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(245, 185, 59, 0.15);
+            border-radius: 15px;
+            border-right: 5px solid var(--accent);
+        }
+
+        .card-name {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(90deg, rgba(10, 61, 98, 0.15), rgba(7, 153, 146, 0.15));
+            border-radius: 15px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            border: 3px solid rgba(10, 61, 98, 0.2);
+        }
+
+        .card-prayer {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(10, 61, 98, 0.15);
+            border-radius: 15px;
+            line-height: 1.7;
+            font-style: italic;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(10, 61, 98, 0.3);
+        }
+
+        .card-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(10, 61, 98, 0.2);
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* الزخارف الإسلامية */
+        .islamic-decoration {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.9;
+            letter-spacing: 10px;
+            font-weight: 700;
+        }
+
+        /* قسم المشاركة */
+        .share-section {
+            margin-top: 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .share-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .share-btn {
+            padding: 12px 25px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .share-btn.facebook { color: #1877F2; }
+        .share-btn.twitter { color: #1DA1F2; }
+        .share-btn.instagram { color: #E4405F; }
+
+        /* التذييل */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .site-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        .site-link:hover {
+            text-decoration: underline;
+        }
+
+        /* تحسين للهواتف */
+        @media (max-width: 992px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            #greetingCard {
+                padding: 30px;
+            }
+            
+            .card-title {
+                font-size: 2rem;
+            }
+            
+            .card-name {
+                font-size: 2.2rem;
+            }
+            
+            .card-greeting {
+                font-size: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            #greetingCard {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-name {
+                font-size: 1.8rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            #greetingCard {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-name {
+                font-size: 1.6rem;
+            }
+            
+            .card-greeting, .card-prayer {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* تأثيرات خاصة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #greetingCard {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* رسالة تأكيد */
+        .confirmation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(7, 153, 146, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* مؤشر التحميل */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="header">
+        <h1><i class="fas fa-mosque"></i> موقع الحاج كلا - بطقات تهنئة رمضان الكريم</h1>
+        <p>أنشئ أجمل بطاقات التهنئة برمضان وأرسلها إلى أحبابك مع أطيب الأدعية والزخارف الإسلامية</p>
+    </div>
+
+    <!-- مؤشر التحميل -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">جاري تحويل البطاقة إلى صورة عالية الجودة...</div>
+        <div class="loading-text" style="font-size: 0.9rem; margin-top: 10px;">قد تستغرق العملية بضع ثوانٍ</div>
+    </div>
+
+    <!-- الرسالة المؤقتة -->
+    <div class="confirmation" id="confirmationMessage"></div>
+
+    <!-- القسم الرئيسي -->
+    <div class="main-container">
+        <!-- لوحة التحكم -->
+        <div class="control-panel">
+            <div class="input-section">
+                <label for="nameInput"><i class="fas fa-user"></i> اكتب اسم الشخص المرسل إليه:</label>
+                <input type="text" id="nameInput" placeholder="مثال: محمد أحمد" value="محمد أحمد">
+            </div>
+
+            <!-- أزرار التحكم -->
+            <div class="control-buttons">
+                <button class="btn btn-primary" id="generateBtn">
+                    <i class="fas fa-gem"></i> إنشاء بطاقة التهنئة
+                </button>
+                
+                <button class="btn btn-whatsapp" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> إرسال عبر واتساب
+                </button>
+                
+                <button class="btn btn-image" id="imageBtn">
+                    <i class="fas fa-image"></i> تحويل البطاقة إلى صورة
+                </button>
+            </div>
+
+            <!-- قسم الزخارف -->
+            <div class="customization-section">
+                <div class="section-title">
+                    <i class="fas fa-star-and-crescent"></i> اختر زخرفة إسلامية
+                </div>
+                <div class="options-grid" id="decorationsContainer">
+                    <!-- سيتم ملؤها بالزخارف -->
+                </div>
+            </div>
+
+            <!-- قسم الأدعية -->
+            <div class="customization-section">
+                <div class="section-title">
+                    <i class="fas fa-hands-praying"></i> اختر دعاء رمضاني
+                </div>
+                <div class="options-grid" id="prayersContainer">
+                    <!-- سيتم ملؤها بالأدعية -->
+                </div>
+            </div>
+        </div>
+
+        <!-- بطاقة التهنئة -->
+        <div class="card-container">
+            <div class="card" id="greetingCard">
+                <div class="card-content">
+                    <div class="card-title" id="cardTitle">تهنئة رمضان الكريم</div>
+                    
+                    <div class="card-greeting" id="cardGreeting">
+                        كل عام وأنتم بخير، تقبل الله منا ومنكم صالح الأعمال
+                    </div>
+                    
+                    <div class="card-name" id="cardName">محمد أحمد</div>
+                    
+                    <div class="card-prayer" id="cardPrayer">
+                        اللهم بلغنا رمضان وأعنا على الصيام والقيام وغض البصر وحفظ اللسان
+                    </div>
+                    
+                    <!-- الزخارف الإسلامية -->
+                    <div class="islamic-decoration" id="cardDecoration">
+                        ﷽ ✿ ❁ ✿ ❁ ✿ ﷽
+                    </div>
+                    
+                    <div class="card-footer">
+                        موقع الحاج - <span class="site-link" id="siteLink">www.alhajj-site.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم المشاركة على التواصل الاجتماعي -->
+    <div class="share-section">
+        <div class="share-title">شارك البطاقة على مواقع التواصل الاجتماعي</div>
+        <div class="share-buttons">
+            <button class="share-btn facebook" id="shareFacebook">
+                <i class="fab fa-facebook"></i> فيسبوك
+            </button>
+            <button class="share-btn twitter" id="shareTwitter">
+                <i class="fab fa-twitter"></i> تويتر
+            </button>
+            <button class="share-btn instagram" id="shareInstagram">
+                <i class="fab fa-instagram"></i> إنستغرام
+            </button>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <div class="footer">
+        <p>© 2023 موقع الحاج كلا - جميع الحقوق محفوظة</p>
+        <p>تم تطوير الموقع لخدمة المجتمع الإسلامي في شهر رمضان المبارك</p>
+        <p>رابط الموقع: <span class="site-link" id="footerLink">www.alhajj-site.com</span></p>
+    </div>
+
+    <!-- مكتبة html2canvas لتحويل البطاقة إلى صورة -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+        // بيانات الموقع - زخارف إسلامية
+        const islamicDecorations = [
+            { id: 1, name: "نجوم وهلال", text: "☆ ★ ✩ ✪ ✫ ✬ ✭ ✮ ✯ ✰ ☪" },
+            { id: 2, name: "زخارف عربية", text: "﷽ ✿ ❁ ✿ ❁ ✿ ﷽" },
+            { id: 3, name: "آيات قرآنية", text: "۞ إِنَّا أَنْزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ ۞" },
+            { id: 4, name: "زخارف مساجد", text: "🕌 ✨ 🌙 🕋 ✨ 🕌" },
+            { id: 5, name: "زخارف إسلامية", text: "۩ ★ ☪ ۩ ★ ☪ ۩ ★ ☪" },
+            { id: 6, name: "نجوم متلألئة", text: "✨ 🌟 💫 ⭐ ✨ 🌟 💫 ⭐" }
+        ];
+
+        // بيانات الموقع - أدعية رمضانية
+        const ramadanPrayers = [
+            { id: 1, text: "اللهم بلغنا رمضان وأعنا على الصيام والقيام وغض البصر وحفظ اللسان" },
+            { id: 2, text: "اللهم اجعل صيامي في رمضان صيام الصائمين وقيامي قيام القائمين ونبهني فيه عن نومة الغافلين" },
+            { id: 3, text: "اللهم ارزقنا في رمضان الجنة وقراءة القرآن والعتق من النار ورضا الرحمن" },
+            { id: 4, text: "اللهم أعني فيه على صيامه وقيامه، وجنبني فيه من هفواته وآثامه، وارزقني فيه ذكرك بدوامه" },
+            { id: 5, text: "اللهم اجعل رمضان شهر خير وبركة وطاعة وقرب منك يا كريم" },
+            { id: 6, text: "اللهم أعنا على ذكرك وشكرك وحسن عبادتك، وارزقنا ليلة القدر واجعلنا من عتقائك من النار" }
+        ];
+
+        // بيانات الموقع - تحيات رمضانية
+        const ramadanGreetings = [
+            "كل عام وأنتم بخير، تقبل الله منا ومنكم صالح الأعمال",
+            "رمضان كريم، كل عام وأنتم بألف خير",
+            "أعاده الله علينا وعليكم باليمن والبركات والمغفرة",
+            "تهنئة بقدوم شهر الرحمة والمغفرة والعتق من النار",
+            "شهر مبارك تقبل الله طاعتكم وبلغكم أجر الصائمين",
+            "كل عام وأنتم إلى الله أقرب وفي طاعته أدوم"
+        ];
+
+        // عناصر DOM
+        const nameInput = document.getElementById('nameInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const imageBtn = document.getElementById('imageBtn');
+        const cardName = document.getElementById('cardName');
+        const cardGreeting = document.getElementById('cardGreeting');
+        const cardPrayer = document.getElementById('cardPrayer');
+        const cardDecoration = document.getElementById('cardDecoration');
+        const decorationsContainer = document.getElementById('decorationsContainer');
+        const prayersContainer = document.getElementById('prayersContainer');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        
+        // عناصر المشاركة
+        const shareFacebook = document.getElementById('shareFacebook');
+        const shareTwitter = document.getElementById('shareTwitter');
+        const shareInstagram = document.getElementById('shareInstagram');
+        
+        // عناصر رابط الموقع
+        const siteLink = document.getElementById('siteLink');
+        const footerLink = document.getElementById('footerLink');
+        
+        // متغيرات التطبيق
+        let selectedDecoration = islamicDecorations[0];
+        let selectedPrayer = ramadanPrayers[0];
+        let selectedGreeting = ramadanGreetings[0];
+        
+        // تهيئة الموقع
+        document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء الزخارف
+            createDecorationOptions();
+            
+            // إنشاء الأدعية
+            createPrayerOptions();
+            
+            // إضافة أحداث للأزرار
+            generateBtn.addEventListener('click', generateCard);
+            whatsappBtn.addEventListener('click', shareViaWhatsApp);
+            imageBtn.addEventListener('click', convertToImage);
+            
+            // إضافة أحداث للمشاركة
+            shareFacebook.addEventListener('click', () => shareOnSocial('facebook'));
+            shareTwitter.addEventListener('click', () => shareOnSocial('twitter'));
+            shareInstagram.addEventListener('click', () => shareOnSocial('instagram'));
+            
+            // توليد البطاقة الأولى تلقائياً
+            generateCard();
+            
+            // تعيين رابط الموقع (يمكنك تغييره)
+            const siteUrl = "www.alhajj-site.com";
+            siteLink.textContent = siteUrl;
+            footerLink.textContent = siteUrl;
+        });
+        
+        // إنشاء خيارات الزخارف
+        function createDecorationOptions() {
+            decorationsContainer.innerHTML = '';
+            
+            islamicDecorations.forEach(decoration => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = decoration.name;
+                button.setAttribute('data-id', decoration.id);
+                
+                if (decoration.id === 1) {
+                    button.classList.add('active');
+                }
+                
+                button.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الأزرار
+                    document.querySelectorAll('#decorationsContainer .option-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // إضافة النشاط للزر المختار
+                    this.classList.add('active');
+                    
+                    // تعيين الزخرفة المختارة
+                    selectedDecoration = islamicDecorations.find(d => d.id == this.getAttribute('data-id'));
+                    
+                    // تحديث البطاقة
+                    updateCardDecoration();
+                });
+                
+                decorationsContainer.appendChild(button);
+            });
+        }
+        
+        // إنشاء خيارات الأدعية
+        function createPrayerOptions() {
+            prayersContainer.innerHTML = '';
+            
+            ramadanPrayers.forEach(prayer => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = prayer.text.substring(0, 30) + '...';
+                button.setAttribute('data-id', prayer.id);
+                
+                if (prayer.id === 1) {
+                    button.classList.add('active');
+                }
+                
+                button.addEventListener('click', function() {
+                    // إزالة النشاط من جميع الأزرار
+                    document.querySelectorAll('#prayersContainer .option-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // إضافة النشاط للزر المختار
+                    this.classList.add('active');
+                    
+                    // تعيين الدعاء المختار
+                    selectedPrayer = ramadanPrayers.find(p => p.id == this.getAttribute('data-id'));
+                    
+                    // تحديث البطاقة
+                    updateCardPrayer();
+                });
+                
+                prayersContainer.appendChild(button);
+            });
+        }
+        
+        // توليد بطاقة جديدة
+        function generateCard() {
+            const name = nameInput.value.trim() || "صديقنا الكريم";
+            cardName.textContent = name;
+            
+            // اختيار تحية عشوائية
+            selectedGreeting = ramadanGreetings[Math.floor(Math.random() * ramadanGreetings.length)];
+            cardGreeting.textContent = selectedGreeting;
+            
+            // تحديث الزخرفة والدعاء
+            updateCardDecoration();
+            updateCardPrayer();
+            
+            // إظهار رسالة تأكيد
+            showConfirmation('تم إنشاء بطاقة التهنئة بنجاح!');
+        }
+        
+        // تحديث الزخرفة في البطاقة
+        function updateCardDecoration() {
+            cardDecoration.textContent = selectedDecoration.text;
+        }
+        
+        // تحديث الدعاء في البطاقة
+        function updateCardPrayer() {
+            cardPrayer.textContent = selectedPrayer.text;
+        }
+        
+        // مشاركة عبر واتساب
+        function shareViaWhatsApp() {
+            const name = nameInput.value.trim() || "صديقنا الكريم";
+            const greeting = selectedGreeting;
+            const prayer = selectedPrayer.text;
+            
+            const message = `تهنئة رمضان الكريم 🌙
+            
+${greeting}
+
+إلى ${name}
+
+${prayer}
+
+${selectedDecoration.text}
+
+موقع الحاج - بطاقات تهنئة رمضان
+${siteLink.textContent}`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            showConfirmation('جاري فتح واتساب للمشاركة...');
+        }
+        
+        // تحويل البطاقة إلى صورة - الإصدار المصحح
+        function convertToImage() {
+            const card = document.getElementById('greetingCard');
+            
+            // إظهار مؤشر التحميل
+            loadingOverlay.style.display = 'flex';
+            
+            // استخدام setTimeout لضمان عرض مؤشر التحميل
+            setTimeout(() => {
+                // إعدادات مبسطة وموثوقة لـ html2canvas
+                const options = {
+                    scale: 2, // مقياس معقول للجودة
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    allowTaint: true,
+                    removeContainer: true,
+                    width: card.offsetWidth,
+                    height: card.offsetHeight,
+                    x: 0,
+                    y: 0,
+                    scrollX: 0,
+                    scrollY: -window.scrollY,
+                    windowWidth: document.documentElement.offsetWidth,
+                    windowHeight: document.documentElement.offsetHeight,
+                    onclone: function(clonedDocument) {
+                        // نسخ الخطوط الخارجية
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+                            * { font-family: 'Cairo', sans-serif !important; }
+                        `;
+                        clonedDocument.head.appendChild(style);
+                        
+                        // التأكد من أن البطاقة مرئية في النسخة المستنسخة
+                        const clonedCard = clonedDocument.getElementById('greetingCard');
+                        if (clonedCard) {
+                            clonedCard.style.opacity = '1';
+                            clonedCard.style.visibility = 'visible';
+                            clonedCard.style.display = 'block';
+                            clonedCard.style.position = 'relative';
+                            clonedCard.style.zIndex = '9999';
+                        }
+                    }
+                };
+                
+                html2canvas(card, options)
+                    .then(canvas => {
+                        // تحسين جودة الصورة
+                        const context = canvas.getContext('2d');
+                        context.imageSmoothingEnabled = true;
+                        context.imageSmoothingQuality = 'high';
+                        
+                        // إنشاء صورة عالية الجودة
+                        const imageData = canvas.toDataURL('image/png', 1.0);
+                        
+                        // إنشاء رابط للتحميل
+                        const link = document.createElement('a');
+                        link.href = imageData;
+                        const fileName = `بطاقة_رمضان_${nameInput.value.trim() || 'تهنئة'}.png`;
+                        link.download = fileName;
+                        
+                        // إخفاء مؤشر التحميل
+                        loadingOverlay.style.display = 'none';
+                        
+                        // بدء التحميل
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        showConfirmation('تم تحميل البطاقة كصورة بنجاح!');
+                    })
+                    .catch(error => {
+                        console.error('خطأ في تحويل البطاقة إلى صورة:', error);
+                        loadingOverlay.style.display = 'none';
+                        showConfirmation('حدث خطأ. يرجى المحاولة مرة أخرى أو استخدام لقطة شاشة يدوية');
+                    });
+            }, 100);
+        }
+        
+        // المشاركة على مواقع التواصل الاجتماعي
+        function shareOnSocial(platform) {
+            const name = nameInput.value.trim() || "صديقنا الكريم";
+            const greeting = selectedGreeting;
+            const prayer = selectedPrayer.text.substring(0, 100) + '...';
+            
+            const message = `تهنئة رمضان الكريم إلى ${name}: ${greeting} ${prayer}`;
+            const encodedMessage = encodeURIComponent(message);
+            const siteUrl = encodeURIComponent(siteLink.textContent);
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}&quote=${encodedMessage}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodedMessage}&url=${siteUrl}`;
+                    break;
+                case 'instagram':
+                    showConfirmation('للمشاركة على إنستغرام، قم بتحميل البطاقة كصورة ثم نشرها');
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+            showConfirmation(`جاري فتح ${platform} للمشاركة...`);
+        }
+        
+        // إظهار رسالة تأكيد
+        function showConfirmation(message) {
+            confirmationMessage.textContent = message;
+            confirmationMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                confirmationMessage.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
