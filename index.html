@@ -23,24 +23,26 @@
             --dark: #1e272e;
         }
 
+        /* التعديل الرئيسي: تقليل شفافية التدرج اللوني للخلفية */
         body {
-            background: linear-gradient(rgba(10, 61, 98, 0.85), rgba(7, 153, 146, 0.85)),
+            background: linear-gradient(rgba(10, 61, 98, 0.7), rgba(7, 153, 146, 0.7)),
                         url('background.jpg') no-repeat center center fixed;
             background-size: cover;
+            background-attachment: fixed;
             color: var(--light);
             min-height: 100vh;
             padding: 20px;
         }
 
-        /* الشريط العلوي */
+        /* الشريط العلوي - زيادة الشفافية */
         .header {
             text-align: center;
             margin-bottom: 40px;
             padding: 25px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08); /* كانت 0.1 */
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px); /* كانت 10px */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
@@ -70,7 +72,7 @@
 
         .header p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.95; /* زيادة الوضوح */
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.7;
@@ -85,15 +87,15 @@
             margin: 0 auto;
         }
 
-        /* لوحة التحكم */
+        /* لوحة التحكم - زيادة الشفافية */
         .control-panel {
             flex: 1;
             min-width: 300px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08); /* كانت 0.1 */
             padding: 30px;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px); /* كانت 10px */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -109,15 +111,16 @@
             font-weight: 600;
         }
 
+        /* حقل الإدخال - زيادة الشفافية */
         .input-section input {
             width: 100%;
             padding: 18px;
             border: none;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12); /* كانت 0.15 */
             color: white;
             font-size: 1.2rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
             transition: all 0.3s;
         }
 
@@ -125,11 +128,11 @@
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 20px rgba(245, 185, 59, 0.5);
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.18); /* كانت 0.2 */
         }
 
         .input-section input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8); /* زيادة الوضوح */
         }
 
         /* أزرار التحكم */
@@ -197,7 +200,7 @@
             margin-bottom: 20px;
             color: var(--accent);
             padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -209,10 +212,11 @@
             gap: 15px;
         }
 
+        /* أزرار الخيارات - زيادة الشفافية */
         .option-btn {
             padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08); /* كانت 0.1 */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
             border-radius: 10px;
             color: white;
             cursor: pointer;
@@ -222,7 +226,7 @@
         }
 
         .option-btn:hover, .option-btn.active {
-            background: rgba(245, 185, 59, 0.3);
+            background: rgba(245, 185, 59, 0.25); /* كانت 0.3 */
             border-color: var(--accent);
             transform: translateY(-3px);
         }
@@ -236,6 +240,7 @@
             align-items: center;
         }
 
+        /* البطاقة - تقليل الشفافية لتبقى واضحة */
         #greetingCard {
             width: 100%;
             max-width: 600px;
@@ -327,15 +332,15 @@
             font-weight: 700;
         }
 
-        /* قسم المشاركة */
+        /* قسم المشاركة - زيادة الشفافية */
         .share-section {
             margin-top: 40px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08); /* كانت 0.1 */
             padding: 25px;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px); /* كانت 10px */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
         }
 
         .share-title {
@@ -351,12 +356,13 @@
             gap: 15px;
         }
 
+        /* أزرار المشاركة - زيادة الشفافية */
         .share-btn {
             padding: 12px 25px;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12); /* كانت 0.15 */
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2); /* كانت 0.3 */
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
@@ -367,20 +373,20 @@
 
         .share-btn:hover {
             transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.22); /* كانت 0.25 */
         }
 
         .share-btn.facebook { color: #1877F2; }
         .share-btn.twitter { color: #1DA1F2; }
         .share-btn.instagram { color: #E4405F; }
 
-        /* التذييل */
+        /* التذييل - زيادة الشفافية */
         .footer {
             text-align: center;
             margin-top: 50px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* كانت 0.2 */
+            color: rgba(255, 255, 255, 0.9); /* زيادة الوضوح */
             font-size: 1rem;
         }
 
@@ -545,7 +551,7 @@
 <body>
     <!-- الشريط العلوي -->
     <div class="header">
-        <h1><i class="fas fa-mosque"></i> موقع الحاج كلا - بطقات تهنئة رمضان الكريم</h1>
+        <h1><i class="fas fa-mosque"></i> موقع الحاج كلا - بطاقات تهنئة رمضان الكريم</h1>
         <p>أنشئ أجمل بطاقات التهنئة برمضان وأرسلها إلى أحبابك مع أطيب الأدعية والزخارف الإسلامية</p>
     </div>
 
@@ -626,7 +632,7 @@
                     </div>
                     
                     <div class="card-footer">
-                        موقع الحاج - <span class="site-link" id="siteLink">www.alhajj-site.com</span>
+                        موقع الحاج - <span class="site-link" id="siteLink">https://zikoboss.github.io/Imag/</span>
                     </div>
                 </div>
             </div>
@@ -653,7 +659,7 @@
     <div class="footer">
         <p>© 2023 موقع الحاج كلا - جميع الحقوق محفوظة</p>
         <p>تم تطوير الموقع لخدمة المجتمع الإسلامي في شهر رمضان المبارك</p>
-        <p>رابط الموقع: <span class="site-link" id="footerLink">www.alhajj-site.com</span></p>
+        <p>رابط الموقع: <span class="site-link" id="footerLink">https://zikoboss.github.io/Imag/</span></p>
     </div>
 
     <!-- مكتبة html2canvas لتحويل البطاقة إلى صورة -->
